@@ -1,8 +1,8 @@
-import withBundleAnalyzer from '@next/bundle-analyzer';
+import withBundleAnalyzer from '@next/bundle-analyzer'
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
-});
+})
 
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   connect-src *;
   font-src 'self';
   frame-src giscus.app
-`;
+`
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -51,10 +51,10 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-];
+]
 /** @type {import('next').NextConfig} */
 const nextConfig = () => {
-  const plugins = [withBundleAnalyzer];
+  const plugins = [withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
     reactStrictMode: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
@@ -75,17 +75,17 @@ const nextConfig = () => {
           source: '/(.*)',
           headers: securityHeaders,
         },
-      ];
+      ]
     },
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-      });
+      })
 
-      return config;
+      return config
     },
-  });
+  })
 }
 
-export default nextConfig;
+export default nextConfig
