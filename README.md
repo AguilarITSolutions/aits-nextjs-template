@@ -28,3 +28,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ### 2. Cannot find package or module even after running `yarn install`
 - https://github.com/yarnpkg/yarn/issues/5500#issuecomment-1221456246
+- ^ This is a workaround and is something I would not recommend. Yarn 3+ has a new approach when it comes to having node_modules.
